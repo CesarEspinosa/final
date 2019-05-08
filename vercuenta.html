@@ -141,7 +141,7 @@
 
                 var iconP = document.createElement("p"); 
                 var spanIcon = document.createElement("span"); 
-                spanIcon.classList.add("icon-shopping_basket")
+                spanIcon.classList.add(trx.categories.label);
                 iconP.appendChild(spanIcon); 
                 iconDiv.appendChild(iconP); 
 
@@ -152,9 +152,14 @@
                 var trxDateP = document.createElement("p");
 
                 var textNodeName = document.createTextNode(trx.name); 
-                var textNodeDate = document.createTextNode(trx.date);
+                var textNodeDate = document.createTextNode(" - "+trx.date);
+
+                var textNodeB = document.createTextNode(trx.categories.name);
+                var textB = document.createElement("b");
+                textB.appendChild(textNodeB); 
 
                 trxNameH1.appendChild(textNodeName); 
+                trxDateP.appendChild(textB);
                 trxDateP.appendChild(textNodeDate);
 
                 trxDetailDiv.appendChild(trxNameH1); 
