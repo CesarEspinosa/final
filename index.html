@@ -105,12 +105,15 @@
             data.forEach(account => {
                 accountsContainer.innerHTML = '<div class="account" onclick="showAccount('+account.id+')"> <p>'+account.nombre+'</p><h1><b>$</b> '+account.finalBalance+'</h1></div>'
             })
+            accountsContainer.innerHTML += '<div class="add-account"><h2>+</h2></div>';
         } else {
             console.log('error')
         }
         }
         
         request.send()
+
+        
     })
 </script>
 </html>

@@ -127,6 +127,7 @@
         var request = new XMLHttpRequest()
         
         request.open('GET', 'http://35.236.52.46:8080/final/accounts/trx?idAccount='+accountId, true)
+        //request.open('GET', 'http://localhost:8080/final/accounts/trx?idAccount='+accountId, true)
         
         request.onload = function() {
         // Begin accessing JSON data here
@@ -137,7 +138,7 @@
                 var li = document.createElement("li"); 
                 var iconDiv = document.createElement("div"); 
                 iconDiv.classList.add("icon"); 
-                iconDiv.classList.add("yellow"); 
+                iconDiv.classList.add(trx.categories.color); 
 
                 var iconP = document.createElement("p"); 
                 var spanIcon = document.createElement("span"); 
