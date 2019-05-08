@@ -1,0 +1,463 @@
+*{
+    margin: 0; 
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body{
+    float: left;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    
+}
+
+#bg{
+    float: left;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: -webkit-linear-gradient(-60deg, #30cfd0 0%, #330867 100%); /* Chrome10+, Safari5.1+ */
+    background: -moz-linear-gradient(-60deg, #30cfd0 0%, #330867 100%);    /* FF3.6+ */
+    background: linear-gradient(-60deg, #30cfd0 0%, #330867 100%);
+}
+
+#title{
+    float: left;
+    position: relative;
+    width: 100%;
+    height: 120px;
+}
+
+#title > p{
+    float: left;
+    position: relative;
+    width: calc(90%);
+    line-height: 120px;
+    font-size: 30px;
+    font-weight: 500;
+    padding-left: 10%;
+    color: white;
+}
+
+#line1{
+    float: left;
+    position: relative;
+    width: 10%;
+    height: 3px;
+}
+
+#line2{
+    float: left;
+    position: relative;
+    width: 25%;
+    height: 3px;
+    background-color: white;
+}
+
+#line3{
+    float: left;
+    position: relative;
+    width: 65%;
+    height: 3px;
+}
+
+#balance-container{
+    float: left;
+    position: relative;
+    width: 100%;
+    height: 200px;
+    -webkit-transition: 2s; /* For Safari 3.1 to 6.0 */
+    transition: 2s;
+}
+
+#balance-container > p{
+    float: left;
+    position: relative;
+    width: calc(90%);
+    line-height: 25px;
+    font-size: 20px;
+    margin-top: 20px;
+    padding-left: 10%;
+    font-weight: 300;
+    color: rgba(255, 255, 255, .8)
+}
+
+#balance-container > h1{
+    float: left;
+    position: relative;
+    width: calc(90%);
+    line-height: 55px;
+    font-size: 50px;
+    padding-left: 10%;
+    font-weight: 500;
+    color: white;
+}
+
+#balance-container> h1 > b{
+    font-weight: 500 !important;
+    color: rgba(255, 255, 255, .5)
+}
+
+#accounts-container{
+    float: left;
+    position: relative;
+    margin-top: 35px;
+    width: 100%;
+    height: 200px;
+    overflow: scroll;
+    -webkit-transition: 2s; /* For Safari 3.1 to 6.0 */
+    transition: 2s;
+}
+
+#accounts-container::-webkit-scrollbar { width: 0 !important }
+
+#accounts-inner-container{
+    float: left;
+    position: relative;
+    min-width: 200%;
+    height: 100%;
+}
+
+.account{
+    float: left;
+    position: relative;
+    width: 60vmin;
+    margin-left: 10vmin;
+    height: 150px;
+    background: white;
+    border-radius: 20px;
+    overflow-x: scroll;
+    z-index: 999;
+}
+
+.account-show-only{
+    width: 80vmin !important;
+
+}
+
+.account > p{
+    float: left;
+    position: relative;
+    width: calc(90%);
+    line-height: 20px;
+    font-size: 15px;
+    margin-top: 30px;
+    padding-left: 10%;
+    font-weight: 400;
+    color: #316F9D;
+}
+
+.account > h1{
+    float: left;
+    position: relative;
+    width: calc(90%);
+    line-height: 55px;
+    font-size: 30px;
+    padding-left: 10%;
+    font-weight: 500;
+    color: rgba(0, 0, 0, .8);
+}
+
+.account > h1 > b{
+    font-weight: 500 !important;
+    color: rgba(0, 0, 0, .5)
+}
+
+.add-account{
+    float: left;
+    position: relative;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    font-size: 50px;
+    margin-left: 10vmin;
+    background: rgba(255, 255, 255, .5); 
+    border-radius: 75px;
+    color: white;
+    margin-top: 25px;
+    font-weight: 400;
+    display: table;
+}
+
+.add-account > h2{
+    display: table-cell; 
+    vertical-align: middle;
+    text-align: center;
+}
+
+#new-trx{
+    position: fixed;
+    bottom: 10px; 
+    right: 10px;
+    width: 65px;
+    height: 65px;
+    background-color:white;
+    border-radius: 15px;
+    display: table;
+    text-align: center;
+}
+
+#new-trx > h1{
+    width: 100%;
+    display: table-cell; 
+    vertical-align: middle;
+    font-size: 50px;
+    font-weight: 600;
+    color: #324687;
+}
+
+#trx-history-container{
+    float: left;
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: scroll;
+}
+
+#trx-history-inner-container{
+    float: left;
+    position: relative;
+    width: 80%;
+    margin-left: 10%;
+    height: 200%;
+
+}
+
+#trx-title{
+    float: left;
+    position: relative;
+    width: 80%;
+    margin-left: 10%;
+    line-height: 30px;
+    font-size: 20px;
+    color: white;
+    font-weight: 500;
+}
+
+#trx-history-inner-container > ul{
+    float: left;
+    width: 100%;
+    list-style-type: none;
+    height: auto;
+    margin-top: 15px;
+    
+}
+
+#trx-history-inner-container > ul > li{
+    float: left;
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.icon{
+    display:table;
+    position: relative;
+    float: left;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border-radius: 25px;
+    font-size: 25px;
+    background-color: #14386B;
+}
+
+.yellow{
+    color: #f5e653;
+}
+
+.green{
+    color: #03c9a9;
+}
+
+.red{
+    color: #e74c3c;
+}
+
+.dark-blue{
+    color: #013243;
+}
+
+.font-green{
+    color: #7befb2 !important;
+}   
+
+.font-red{
+    color: #cf000f !important;
+}
+.icon > p{
+    display:table-cell;
+    vertical-align: middle;
+}
+.trx-detail{
+    position: relative;
+    float: left;
+    width: calc(65% - 55px);
+    height: 50px;
+    padding-left: 5px;
+}
+
+.trx-detail > h1, .trx-detail > p{
+    position: relative;
+    float: left;
+    width: 100%;
+    line-height: 25px;
+    color: white;
+    
+}
+
+
+.trx-detail > h1{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+
+.trx-detail > p{
+    font-size: 13px;
+    color: rgba(255, 255, 255, .8) !important;
+}
+
+.trx-qty{
+    position: relative;
+    float: left;
+    width: 35%;
+    height: 50px;
+    display: table;
+}
+
+.trx-qty > h1{
+    position: relative;
+    float: left;
+    width: 100%;
+    height: 50px;
+    font-size: 15px;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    color: white;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 99999; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    position: relative;
+    float: left;
+    background-color: #ffffff;
+    height: 170px;
+    width: 220px;
+    top: 50%;
+    margin-top: -105px;
+    margin-left: calc(50% - 110px);
+    display: table;
+    border-radius: 25px;
+    padding-top: 20px;
+  }
+
+  .modal-content > ul{
+      position: relative;
+      float: left;
+      list-style-type: none;
+      height: 150px;
+      width: 100%;
+  }
+
+  .modal-content > ul > li{
+    float: left;
+    position: relative;
+    width: 100%;
+    height: 50px;
+  }
+
+  .option-green{
+      color: #6EC7A9;
+    background-color: #F2F9F5;
+  }
+
+  .option-red{
+      color: #FF829E;
+      background-color: #FFF1F4;
+  }
+
+  .option-purple{
+      color: #C086FF;
+      background-color: #F8F2FF;
+  }
+
+  .modal-icon{
+        display:table;
+        position: relative;
+        float: left;
+        margin: 10px;
+        width: 25px;
+        height: 25px !important;
+        text-align: center;
+        border-radius: 25px;
+        font-size: 25px;
+        padding: 2.5px;
+  }
+
+  
+  .modal-icon > p{
+    display:table-cell;
+    vertical-align: middle;
+}
+  .modal-option{
+    position: relative;
+    float: left;
+    width: calc(70% - 20px);
+    margin-left: 20px;
+    height: 50px;
+    padding-left: 5px;
+}
+
+.modal-option > h1{
+    position: relative;
+    float: left;
+    width: 100%;
+    line-height: 50px;
+    color: rgba(0, 0, 0, .8);
+    font-size: 18px;
+    font-weight: 500;   
+}
+
+
+.modal-option > p{
+    font-size: 13px;
+    color: rgba(255, 255, 255, .8) !important;
+}
+  
+  /* The Close Button */
+  .close {
+    color: #aaa; 
+    float: right;
+    font-size: 28px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    display: table-cell; 
+    vertical-align: middle;
+    width: 40px;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
