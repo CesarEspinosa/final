@@ -20,7 +20,7 @@
         <div id="line3"></div>
         <div id="balance-container">
             <p>Balance</p>
-            <h1><b>$</b> 5,000.00</h1>
+            <h1 id ="balance-label"></h1>
         </div>
 
         <div id="accounts-container">
@@ -112,7 +112,8 @@
 <script>
     window.addEventListener('load', function(){
         var accountsContainer = document.getElementById("accounts-inner-container");
-
+        var balanceLabel = document.getElementById("balance-label");
+        var saldo = 0;
         var request = new XMLHttpRequest()
         
         request.open('GET', 'http://35.236.52.46:8080/final/accounts?userId=1', true)
@@ -124,9 +125,11 @@
 
         if (request.status >= 200 && request.status < 400) {
             data.forEach(account => {
+                saldo += account.finalBalance;
                 accountsContainer.innerHTML += '<div class="account" onclick="showAccount('+account.id+')"> <p>'+account.nombre+'</p><h1><b>$</b> '+account.finalBalance+'</h1></div>'
             })
             accountsContainer.innerHTML += '<div class="add-account" onclick="showModal()"><h2>+</h2></div>';
+            balanceLabel.innerHTML = '<b>$</b> '+ saldo;
         } else {
             console.log('error')
         }

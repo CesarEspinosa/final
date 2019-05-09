@@ -79,7 +79,8 @@ function createNewAccount(){
 
         if (request.status >= 200 && request.status < 400) {
             if(data.id >= 0){
-              alert("yay");
+              hideModal();
+              document.location.reload();
             }
         } else {
             console.log('error')
