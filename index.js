@@ -70,8 +70,8 @@ function createNewAccount(){
 
   var request = new XMLHttpRequest()
         
-        //request.open('GET', 'http://35.236.52.46:8080/final/accounts/addAccount?id=1&initialBalance='+saldo+'&name='+name, true)
-        request.open('GET', 'http://localhost:8080/final/accounts/addAccount?id=1&initialBalance='+saldo+'&name='+name, true)
+        request.open('GET', 'http://35.236.52.46:8080/final/accounts/addAccount?id=1&initialBalance='+saldo+'&name='+name, true)
+        //request.open('GET', 'http://localhost:8080/final/accounts/addAccount?id=1&initialBalance='+saldo+'&name='+name, true)
         
         request.onload = function() {
         // Begin accessing JSON data here
