@@ -107,8 +107,8 @@
 
         var reqAccInfo = new XMLHttpRequest()
         
-        reqAccInfo.open('GET', 'http://35.236.52.46:8080/final/accounts/account?id='+accountId, true)
-        
+        //reqAccInfo.open('GET', 'http://35.236.52.46:8080/final/accounts/account?id='+accountId, true)
+        reqAccInfo.open('GET', 'http://localhost:8080/final/accounts/account?id='+accountId, true)
         reqAccInfo.onload = function() {
         // Begin accessing JSON data here
         var data = JSON.parse(this.response)
@@ -126,8 +126,8 @@
 
         var request = new XMLHttpRequest()
         
-        request.open('GET', 'http://35.236.52.46:8080/final/accounts/trx?idAccount='+accountId, true)
-        //request.open('GET', 'http://localhost:8080/final/accounts/trx?idAccount='+accountId, true)
+        //request.open('GET', 'http://35.236.52.46:8080/final/accounts/trx?idAccount='+accountId, true)
+        request.open('GET', 'http://localhost:8080/final/accounts/trx?idAccount='+accountId, true)
         
         request.onload = function() {
         // Begin accessing JSON data here
