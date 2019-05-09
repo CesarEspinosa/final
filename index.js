@@ -40,6 +40,21 @@ window.onclick = function(event) {
   }
 }
 
+function formatBalance(value){
+  var split = value.split('.'); 
+  var balance = split[0]; 
+  var decimals = split[1];
+  
+  var saldo =  balance.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+  if(decimals === undefined){
+    decimals = "00";
+  }
+  if(decimals.length == 1){
+    decimals += "0";
+  }
+  return saldo + "." + decimals;
+}
+
 function formatNumber(value){
 
   var split = value.split('.'); 
