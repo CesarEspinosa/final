@@ -57,9 +57,13 @@
             <h1>+</h1>
         </div>
 
-        <div id="del-acc">
+        <div id="del-acc" onclick="showAccModal()">
                 <h1><span class="icon-delete red"></span></h1>
             </div>
+
+            <div id="back" onclick="showAccModal()">
+                    <h1><span class="icon-arrow_back green"></span></h1>
+                </div>
     </div>
 
     <div id="myModal" class="modal">
@@ -107,7 +111,7 @@
                     <h1>¿Estás seguro que deseas eliminar esta cuenta?</h1>
     
                     <button onclick="createNewAccount()" class="btn-blue btn-eliminar">Eliminar</button>
-                    <button onclick="hideModal()" class="btn-red btn-cancelar">Cancelar</button>
+                    <button onclick="hideAccModal()" class="btn-red btn-cancelar">Cancelar</button>
                     
                 </div>
               

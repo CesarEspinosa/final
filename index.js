@@ -12,7 +12,7 @@ var modal3 = document.getElementById('delAccModal');
 
 // Get the button that opens the modal
 var btn = document.getElementById("new-trx");
-var btn3 = document.getElementById("del-acc");
+
 var btn2 = document.querySelector(".add-account")
 
 // Get the <span> element that closes the modal
@@ -22,7 +22,7 @@ btn.onclick = function() {
   modal.style.display = "block";
 }
 
-btn3.onclick = function(){
+function showAccModal(){
   modal3.style.display = "block";
 }
 
