@@ -70,6 +70,7 @@ function formatBalance(value){
   if(decimals.length == 1){
     decimals += "0";
   }
+  decimals = decimals.substring(0,2);
   return saldo + "." + decimals;
 }
 
