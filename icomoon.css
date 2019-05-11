@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?kggxtd');
-  src:  url('fonts/icomoon.eot?kggxtd#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?kggxtd') format('truetype'),
-    url('fonts/icomoon.woff?kggxtd') format('woff'),
-    url('fonts/icomoon.svg?kggxtd#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?3itrsc');
+  src:  url('fonts/icomoon.eot?3itrsc#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?3itrsc') format('truetype'),
+    url('fonts/icomoon.woff?3itrsc') format('woff'),
+    url('fonts/icomoon.svg?3itrsc#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -24,6 +24,18 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-visa:before {
+  content: "\e900";
+  color: #142787;
+}
+.icon-americanexpress:before {
+  content: "\e901";
+  color: #2e77bc;
+}
+.icon-mastercard:before {
+  content: "\e902";
+  color: #eb001b;
+}
 .icon-money:before {
   content: "\f0d6";
 }
@@ -53,6 +65,9 @@
 }
 .icon-control_point_duplicate:before {
   content: "\e3bb";
+}
+.icon-mode_edit:before {
+  content: "\e254";
 }
 .icon-delete:before {
   content: "\e872";

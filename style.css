@@ -242,7 +242,7 @@ body{
     text-align: center;
 }
 
-#new-trx, #del-acc, #back{
+#new-trx, #del-acc, #back, #edit-acc{
     position: fixed;
     bottom: 10px; 
     right: 10px;
@@ -264,11 +264,15 @@ body{
     display: table; 
 }
 
-#del-acc > h1, #back > h1{
+#edit-acc{
+    right: 160px;
+}
+
+#del-acc > h1, #back > h1, #edit-acc > h1{
     font-size: 32px !important;
 }
 
-#new-trx > h1, #del-acc > h1, #back > h1{
+#new-trx > h1, #del-acc > h1, #back > h1, #edit-acc > h1{
     width: 100%;
     display: table-cell; 
     vertical-align: middle;
