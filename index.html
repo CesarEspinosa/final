@@ -110,6 +110,27 @@
                     <p>$ </p><input onfocus="eraseNumber(this)" onblur="formatNumber(this.value)" id="saldo-inicial" type="number">
                 </div>
 
+                <div class="modal-content-newacc-issuer">
+                    <label>
+                        <input type="radio" name="issuer" value="visa" checked="checked" id="visa-radio">
+                        <h1><span class="icon-cc-visa"></span></h1>
+                    </label>
+
+                    <label>
+                            <input type="radio" name="issuer"  value="mastercard" id="mastercard-radio">
+                            <h1><span class="icon-cc-mastercard"></span></h1>
+                        </label>
+
+                        <label>
+                                <input type="radio" name="issuer" value="amex" id="amex-radio">
+                                <h1><span class="icon-cc-amex"></span></h1>
+                            </label>
+                            <label>
+                                    <input type="radio" name="issuer" value="money" id="money-radio">
+                                    <h1><span class="icon-money"></span></h1>
+                                </label>
+                </div>
+
                 <button onclick="createNewAccount()" class="btn-blue">Crear</button>
                 <button onclick="hideModal()" class="btn-red">Cancelar</button>
                 

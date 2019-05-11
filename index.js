@@ -59,6 +59,7 @@ window.onclick = function(event) {
 }
 
 function formatBalance(value){
+  console.log(value);
   var split = value.split('.'); 
   var balance = split[0]; 
   var decimals = split[1];
@@ -99,12 +100,14 @@ function eraseNumber(input){
 function createNewAccount(){
   var name = document.getElementById("name-new-acc").value; 
   var saldo = document.getElementById("saldo-inicial").value; 
+  var issuer = document.querySelector('input[name="issuer"]:checked').value;
+  console.log(issuer);
   saldo = saldo.replace(",","");
   console.log(saldo);
 
   var request = new XMLHttpRequest()
         
-        request.open('GET', 'http://35.236.52.46:8080/final/accounts/addAccount?id=1&initialBalance='+saldo+'&name='+name, true)
+        request.open('GET', 'http://35.236.52.46:8080/final/accounts/addAccount?id=1&initialBalance='+saldo+'&name='+name+'&issuer='+issuer, true)
         //request.open('GET', 'http://localhost:8080/final/accounts/addAccount?id=1&initialBalance='+saldo+'&name='+name, true)
         
         request.onload = function() {

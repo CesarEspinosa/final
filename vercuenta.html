@@ -48,7 +48,8 @@
                         <div class="trx-qty">
                             <h1 class="font-red">- $ 2,340.20</h1>
                         </div>
-                    </li> -->
+                    </li>  -->
+                    
                 </ul>
             </div>
 
@@ -135,8 +136,9 @@
         reqAccInfo.onload = function() {
         // Begin accessing JSON data here
         var data = JSON.parse(this.response)
-
+        
         if (reqAccInfo.status >= 200 && reqAccInfo.status < 400) { 
+            var balance = formatBalance(data.finalBalance.toString());
             var icon = ""; 
                 if(data.issuer == "money"){
                     icon = data.issuer;
@@ -145,7 +147,7 @@
                 }
             document.getElementById("header-title").innerHTML = data.nombre;
             document.getElementById("account-name").innerHTML = data.nombre;
-            document.getElementById("account-balance").innerHTML = "<b>$</b> "+ data.finalBalance;
+            document.getElementById("account-balance").innerHTML = "<b>$</b> "+ balance;
             document.getElementById("account-icon").classList.add(data.issuer); 
             document.getElementById("account-icon").innerHTML = '<span class="icon-'+icon+'"></span>';
         } else {
@@ -200,13 +202,13 @@
                 var trxQtyDiv = document.createElement("div"); 
                 trxQtyDiv.classList.add("trx-qty")
                 var trxNameH2 = document.createElement("h1");
-
+                var qty = formatBalance(trx.qty.toString());
                 if(trx.type == 1){
                     trxNameH2.classList.add("font-green")
-                    var textNode = document.createTextNode("+ $"+ trx.qty);
+                    var textNode = document.createTextNode("+ $"+ qty);
                 }else{
                     trxNameH2.classList.add("font-red")
-                    var textNode = document.createTextNode("- $"+ trx.qty);
+                    var textNode = document.createTextNode("- $"+ qty);
                 }
 
                 trxNameH2.appendChild(textNode);
