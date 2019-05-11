@@ -170,9 +170,10 @@ body{
 
 .account > h2{
     float: left;
-    position: relative;
+    position: absolute;
     width: 80%;
-    margin-left: 12%;
+    left:12%;
+    bottom:5px;
     text-align: right;
     line-height: 25px;
 }
