@@ -8,9 +8,11 @@ function showAccount(id){
 // Get the modal
 var modal = document.getElementById('myModal');
 var modal2 = document.getElementById('newAccModal');
+var modal3 = document.getElementById('delAccModal');
 
 // Get the button that opens the modal
 var btn = document.getElementById("new-trx");
+var btn3 = document.getElementById("del-acc");
 var btn2 = document.querySelector(".add-account")
 
 // Get the <span> element that closes the modal
@@ -18,6 +20,14 @@ var btn2 = document.querySelector(".add-account")
 // When the user clicks on the button, open the modal 
 btn.onclick = function() {
   modal.style.display = "block";
+}
+
+btn3.onclick = function(){
+  modal3.style.display = "block";
+}
+
+function hideAccModal(){
+  modal3.style.display = "none";
 }
 
 function showModal(){
@@ -37,6 +47,10 @@ window.onclick = function(event) {
 
   if(event.target == modal2){
     modal2.style.display = "none";
+  }
+
+  if(event.target == modal3){
+    modal3.style.display = "none";
   }
 }
 

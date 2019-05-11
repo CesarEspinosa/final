@@ -19,8 +19,8 @@
         <div id="line2"></div>
         <div id="line3"></div>
 
-        <div id="accounts-container" class="">
-            <div id="accounts-inner-container">
+        <div id="accounts-container" style="height: 150px;">
+            <div id="accounts-inner-container" >
                     <div class="account account-show-only">
                             <p id="account-name"></p>
                             <h1 id="account-balance"></h1>
@@ -56,6 +56,10 @@
         <div id="new-trx">
             <h1>+</h1>
         </div>
+
+        <div id="del-acc">
+                <h1><span class="icon-delete red"></span></h1>
+            </div>
     </div>
 
     <div id="myModal" class="modal">
@@ -94,6 +98,20 @@
             </div>
           
           </div>
+
+          <div id="delAccModal" class="modal-delacc">
+
+                <!-- Modal content -->
+                <div class="modal-content-delacc">
+                        
+                    <h1>¿Estás seguro que deseas eliminar esta cuenta?</h1>
+    
+                    <button onclick="createNewAccount()" class="btn-blue">Eliminar</button>
+                    <button onclick="hideModal()" class="btn-red">Cancelar</button>
+                    
+                </div>
+              
+            </div>
 </body>
 
 <script src="index.js">

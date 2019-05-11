@@ -204,7 +204,7 @@ body{
     text-align: center;
 }
 
-#new-trx{
+#new-trx, #del-acc{
     position: fixed;
     bottom: 10px; 
     right: 10px;
@@ -216,7 +216,16 @@ body{
     text-align: center;
 }
 
-#new-trx > h1{
+#del-acc{
+    right: 85px !important;
+    display: table;
+}
+
+#del-acc > h1{
+    font-size: 32px !important;
+}
+
+#new-trx > h1, #del-acc > h1{
     width: 100%;
     display: table-cell; 
     vertical-align: middle;
@@ -229,7 +238,7 @@ body{
     float: left;
     position: relative;
     width: 100%;
-    height: 250px;
+    height: calc(100% - 423px);
     overflow: scroll;
 }
 
@@ -617,4 +626,56 @@ body{
   .btn-blue{
       background-color: #2574a9;
       color : white;
+  }
+
+  .modal-delacc {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 99999; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content-delacc {
+    position: relative;
+    float: left;
+    background-color: #ffffff;
+    height: 105px;
+    width: 220px;
+    top: 100%;
+    margin-top: -125px;
+    width: 100%;
+    bottom: 0px;
+    display: table;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    padding-top: 20px;
+  }
+
+  .modal-content-delacc > h1{
+      position: relative;
+      float: left;
+      width: calc(100% - 20px);
+      padding-left: 20px;
+      line-height: 30px;
+      font-size: 17px;
+      font-weight: 500;
+  }
+
+  .modal-content-delacc > button{
+      position: relative;
+      float: right;
+      width: 25%;
+      margin-right: 5%;
+      height: 30px;
+      margin-top: 5px;
+      border: none;
+      border-radius: 5px;
+      font-size: 15px;
   }
