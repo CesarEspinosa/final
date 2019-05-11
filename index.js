@@ -5,6 +5,10 @@ function showAccount(id){
     document.location = "/diplomado/final/vercuenta.html"
 }
 
+function redirect(to){
+  document.location = "/diplomado/final/"+to;
+}
+
 // Get the modal
 var modal = document.getElementById('myModal');
 var modal2 = document.getElementById('newAccModal');

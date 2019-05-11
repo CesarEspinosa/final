@@ -24,6 +24,7 @@
                     <div class="account account-show-only">
                             <p id="account-name"></p>
                             <h1 id="account-balance"></h1>
+                            <h2 id="account-icon" ></h2>
                     </div>
             </div>
         </div>
@@ -61,7 +62,7 @@
                 <h1><span class="icon-delete red"></span></h1>
             </div>
 
-            <div id="back" onclick="showAccModal()">
+            <div id="back" onclick="redirect('index.html')">
                     <h1><span class="icon-arrow_back green"></span></h1>
                 </div>
     </div>
@@ -136,9 +137,17 @@
         var data = JSON.parse(this.response)
 
         if (reqAccInfo.status >= 200 && reqAccInfo.status < 400) { 
+            var icon = ""; 
+                if(data.issuer == "money"){
+                    icon = data.issuer;
+                }else{
+                    icon = "cc-"+data.issuer;
+                }
             document.getElementById("header-title").innerHTML = data.nombre;
             document.getElementById("account-name").innerHTML = data.nombre;
             document.getElementById("account-balance").innerHTML = "<b>$</b> "+ data.finalBalance;
+            document.getElementById("account-icon").classList.add(data.issuer); 
+            document.getElementById("account-icon").innerHTML = '<span class="icon-'+icon+'"></span>';
         } else {
             console.log('error')
         }
