@@ -126,3 +126,26 @@ function createNewAccount(){
         
         request.send()
 }
+
+function deleteAccount(){
+  var accountId = localStorage.getItem("accountId");
+
+  var request = new XMLHttpRequest()
+        
+        request.open('GET', 'http://35.236.52.46:8080/final/accounts/delete?id='+accountId, true)
+        //request.open('GET', 'http://localhost:8080/final/accounts/delete?id='+accountId, true)
+        
+        request.onload = function() {
+
+        if (request.status >= 200 && request.status < 400) {
+            
+              
+              document.location = "/diplomado/final/index.html"
+            
+        } else {
+            console.log('error')
+        }
+        }
+        
+        request.send()
+}
