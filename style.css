@@ -669,13 +669,22 @@ body{
   }
 
   .modal-content-delacc > button{
-      position: relative;
+      position: absolute;
       float: right;
       width: 25%;
       margin-right: 5%;
       height: 30px;
-      margin-top: 5px;
+      right: 5px;
+      bottom: 5px;
       border: none;
       border-radius: 5px;
       font-size: 15px;
+  }
+  
+  .btn-eliminar{
+
+  }
+
+  .btn-cancelar{
+    right: calc(25% + 20px) !important; 
   }
