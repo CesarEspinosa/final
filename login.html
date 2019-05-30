@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="icomoon.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    
+    <title>Document</title>
+</head>
+<body>
+    <div id="bg">
+        <div class="login-container">
+            <h1>INICIO DE SESIÓN</h1>
+            <input type="text" name="" id="user" placeholder="Nombre de Usuario">
+            <input type="password" name="" id="password" placeholder="Contraseña">
+            <p id="prompt">Credenciales Incorrectas</p>
+            <button onclick="iniciarSesion()">INICIAR SESIÓN</button>
+            <a href="register.html">¿Aún no tienes cuenta? Registrate aquí</a>
+        </div>
+    </div>
+    
+</body>
+<script src="index.js"></script>
+<script>
+function iniciarSesion(){
+    var user = document.getElementById('user').value
+    var password = document.getElementById('password').value
+
+    var request = new XMLHttpRequest()
+        
+        request.open('GET', 'http://35.236.52.46:8080/final/accounts/findUser?user='+user+'&password='+password, true)
+        //request.open('GET', 'http://localhost:8080/final/accounts?userId=1', true)
+        
+        request.onload = function() {
+        // Begin accessing JSON data here
+        
+        if(request.status == 404){
+            document.getElementById("prompt").style.display = 'block';
+            document.getElementById('user').value = "";
+            document.getElementById('password').value = "";
+        }
+        if (request.status >= 200 && request.status < 400) {
+            var data = JSON.parse(this.response)
+            data.forEach(user => {
+                localStorage.setItem("userId", user.id);
+            })
+            redirect('index.html')
+        } else {
+            console.log('error')
+        }
+        }
+        
+        request.send()
+}
+</script>
+</html>

@@ -58,6 +58,10 @@
         <div id="new-trx">
             <h1>+</h1>
         </div>
+
+        <div onclick="logout()" id="logout">
+                <h1><span class="icon-exit_to_app red"></span></h1>
+            </div>
     </div>
     <div id="myModal" class="modal">
 
@@ -83,7 +87,7 @@
                             <p><span class="icon-remove"></span></p> 
                         </div>
                     </li>
-                    <li>
+                    <li onclick="showSelectAccountTransferFromModal()">
                         <div class="modal-option">
                             <h1>Transferencia</h1>
                         </div>
@@ -171,6 +175,18 @@
                 </ul>
             </div>
         </div>
+
+        <div id="selectAccountTransferFromModal" class="modal-select-account">
+                <div class="modal-content-select-account" id="modal-content-select-account-from">
+                    <h1>Selecciona la cuenta <s>origen</s>:</h1>
+                </div>
+            </div>
+
+            <div id="selectAccountTransferToModal" class="modal-select-account">
+                <div class="modal-content-select-account" id="modal-content-select-account-to">
+                    <h1>Selecciona la cuenta <s>destino</s>:</h1>
+                </div>
+            </div>
     
 </body>
 
@@ -180,12 +196,16 @@
 
 <script>
     window.addEventListener('load', function(){
+        var userId = localStorage.getItem("userId");
+        if(userId == null){
+            redirect('login.html');
+        }
         var accountsContainer = document.getElementById("accounts-inner-container");
         var balanceLabel = document.getElementById("balance-label");
         var saldo = 0;
         var request = new XMLHttpRequest()
         
-        request.open('GET', 'http://35.236.52.46:8080/final/accounts?userId=1', true)
+        request.open('GET', 'http://35.236.52.46:8080/final/accounts?userId='+userId, true)
         //request.open('GET', 'http://localhost:8080/final/accounts?userId=1', true)
         
         request.onload = function() {
@@ -216,5 +236,10 @@
 
         
     })
+
+    function logout(){
+        localStorage.removeItem("userId"); 
+        redirect("login.html");
+    }
 </script>
 </html>

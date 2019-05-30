@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?3itrsc');
-  src:  url('fonts/icomoon.eot?3itrsc#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?3itrsc') format('truetype'),
-    url('fonts/icomoon.woff?3itrsc') format('woff'),
-    url('fonts/icomoon.svg?3itrsc#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?ses1zb');
+  src:  url('fonts/icomoon.eot?ses1zb#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?ses1zb') format('truetype'),
+    url('fonts/icomoon.woff?ses1zb') format('woff'),
+    url('fonts/icomoon.svg?ses1zb#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -77,6 +77,9 @@
 }
 .icon-directions_transit:before {
   content: "\e535";
+}
+.icon-exit_to_app:before {
+  content: "\e879";
 }
 .icon-home:before {
   content: "\e88a";

@@ -62,9 +62,9 @@
         <div id="del-acc" onclick="showAccModal()">
                 <h1><span class="icon-delete red"></span></h1>
             </div>
-        <div id="edit-acc" onclick="">
+        <!-- <div id="edit-acc" onclick="">
             <h1><span class="icon-mode_edit orange"></span></h1>
-        </div>
+        </div> -->
 
             <div id="back" onclick="redirect('index.html')">
                     <h1><span class="icon-arrow_back green"></span></h1>
@@ -96,7 +96,7 @@
                             <p><span class="icon-remove"></span></p> 
                         </div>
                     </li>
-                    <li>
+                    <li onclick="showSelectAccountTransferFromModal()">
                         <div class="modal-option">
                             <h1>Transferencia</h1>
                         </div>
@@ -143,9 +143,37 @@
               
             </div>
 
+            <div id="newTransferModal" class="modal-newtrx">
+
+                <!-- Modal content -->
+                <div class="modal-content-newtrx">
+                    <h1>Registrar Transferencia Entre Cuentas</h1>
+                    
+                <div class="modal-content-newacc-input">
+                    <h4>Cantidad:</h4>
+                    <p>$ </p><input onfocus="eraseNumber(this)" onblur="formatNumberNewTransfer(this.value)" id="trx-qty-transfer" type="number">
+                </div>
+                <button  onclick="newTransfer()" class="btn-blue">Aceptar</button>
+                <button onclick="hidenewTransferModal()" class="btn-red">Cancelar</button>
+                </div>
+              
+            </div>
+
             <div id="selectAccountNewTrxModal" class="modal-select-account">
                 <div class="modal-content-select-account" id="modal-content-select-account">
                     <h1>Selecciona la cuenta:</h1>
+                </div>
+            </div>
+
+            <div id="selectAccountTransferFromModal" class="modal-select-account">
+                <div class="modal-content-select-account" id="modal-content-select-account-from">
+                    <h1>Selecciona la cuenta <s>origen</s>:</h1>
+                </div>
+            </div>
+
+            <div id="selectAccountTransferToModal" class="modal-select-account">
+                <div class="modal-content-select-account" id="modal-content-select-account-to">
+                    <h1>Selecciona la cuenta <s>destino</s>:</h1>
                 </div>
             </div>
 
@@ -165,6 +193,10 @@
 
 <script>
     window.addEventListener('load', function(){
+        var userId = localStorage.getItem("userId");
+        if(userId == null){
+            redirect('login.html');
+        }
         var accountId = localStorage.getItem("accountId");
         var trxList = document.getElementById("trx-list");
 

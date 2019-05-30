@@ -1,0 +1,88 @@
+.login-container{
+    position: relative;
+    float: left;
+    width: 70%;
+    background-color: #fff;
+    height: 250px;
+    margin-left: 15%;
+    top: calc(50% - 115px);
+    border-radius: 15px;
+    display: table;
+}
+
+.register{
+    height: 310px !important;
+    top: calc(50% - 155px);
+}
+
+.login-container > h1{
+    position: relative;
+    float: left;
+    width: 100%;
+    display:table-cell; 
+    height: 40px;
+    line-height: 40px;
+    vertical-align: middle;
+    font-size: 20px;
+    text-align: center;
+}
+
+.login-container > input{
+    float: left;
+    position: relative;
+    width: calc(100% - 50px);
+    padding-left: 10px;
+    margin-left: 20px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background-color: #bdc3c7;
+    color: #2e3131;
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+.login-container > button{
+    position: relative;
+      float: right;
+      width: 50%;
+      margin-right: 25%;
+      margin-top: 20px;
+      height: 30px;
+      border: none;
+      border-radius: 5px;
+      font-size: 15px;
+      background-color: #2574a9;
+      color : white;
+}
+
+.login-container > p{
+    position: relative;
+    float: left;
+    height: 20px;
+    width: calc(100% - 40px);
+    margin-left: 20px;
+    color: red; 
+    font-weight: bolder;
+    font-size: 15px;
+    line-height: 20px;
+    display: table-cell;
+    vertical-align: middle;
+    display: none;
+}
+
+.login-container > a{
+    position: relative;
+    float: left;
+    height: 20px;
+    width: calc(100% - 40px);
+    margin-left: 20px;
+    margin-right: 20px;
+    font-weight: bolder;
+    font-size: 15px;
+    line-height: 20px;
+    display: table-cell;
+    vertical-align: middle;
+}

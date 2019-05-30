@@ -16,6 +16,10 @@ var modal3 = document.getElementById('delAccModal');
 var modal4 = document.getElementById('selectAccountNewTrxModal'); 
 var modal5 = document.getElementById('selectCategoryTrxModal');
 var modal6 = document.getElementById('newTrxModal');
+var modal7 = document.getElementById('selectAccountTransferFromModal'); 
+var modal8 = document.getElementById('selectAccountTransferToModal'); 
+var modal9 = document.getElementById('newTransferModal'); 
+
 
 // Get the button that opens the modal
 var btn = document.getElementById("new-trx");
@@ -50,12 +54,13 @@ function hideModal(){
 }
 
 function showSelectAccountModal(type){
+  var userId = localStorage.getItem("userId");
   hideNewTrxModal()
   var accountsContainer = document.getElementById("modal-content-select-account");
   accountsContainer.innerHTML = ""; 
         var request = new XMLHttpRequest()
         
-        request.open('GET', 'http://35.236.52.46:8080/final/accounts?userId=1', true)
+        request.open('GET', 'http://35.236.52.46:8080/final/accounts?userId='+userId, true)
         //request.open('GET', 'http://localhost:8080/final/accounts?userId=1', true)
         
         request.onload = function() {
@@ -200,6 +205,53 @@ function openSelectCategoryModal(type){
   modal5.style.display = "block";
 }
 
+function newTransfer(){
+  var categoryId = 12;
+  var selectedAccountIdFrom = document.querySelector('input[name="account-from"]:checked').value;
+  var selectedAccountIdTo = document.querySelector('input[name="account-to"]:checked').value;
+  var qty = document.getElementById("trx-qty-transfer").value; 
+  qty = qty.replace(",","");
+  var date = "gg"
+
+  var request = new XMLHttpRequest()
+        
+        request.open('GET', 'http://35.236.52.46:8080/final/newTrx?idAccount='+selectedAccountIdFrom+'&type=0&category='+categoryId+'&qty='+qty+'&name=Transferencia&date='+date, true)
+        
+        //request.open('GET', 'http://localhost:8080/final/accounts/addAccount?id=1&initialBalance='+saldo+'&name='+name, true)
+        
+        request.onload = function() {
+        // Begin accessing JSON data here
+
+        if (request.status >= 200 && request.status < 400) {
+          var request2 = new XMLHttpRequest()
+        
+          request2.open('GET', 'http://35.236.52.46:8080/final/newTrx?idAccount='+selectedAccountIdTo+'&type=1&category='+categoryId+'&qty='+qty+'&name=Transferencia&date='+date, true)
+          
+          //request2.open('GET', 'http://localhost:8080/final/accounts/addAccount?id=1&initialBalance='+saldo+'&name='+name, true)
+          
+          request2.onload = function() {
+          // Begin accessing JSON data here
+  
+          if (request2.status >= 200 && request2.status < 400) {
+                hidenewTransferModal();
+                document.location.reload();
+          } else {
+              console.log('error')
+          }
+          }
+          
+          request2.send()
+        } else {
+            console.log('error')
+        }
+        }
+        
+        request.send()
+
+
+        
+}
+
 function saveNewTrx(accountId, categoryId, type){
   var today = new Date();
 var dd = today.getDate();
@@ -255,6 +307,213 @@ function hideNewTrxDetailModal(){
   modal6.style.display = "none";
 }
 
+function showSelectAccountTransferFromModal(){
+  var userId = localStorage.getItem("userId");
+  hideNewTrxModal()
+  var accountsContainer = document.getElementById("modal-content-select-account-from");
+  accountsContainer.innerHTML = ""; 
+        var request = new XMLHttpRequest()
+        
+        request.open('GET', 'http://35.236.52.46:8080/final/accounts?userId='+userId, true)
+        //request.open('GET', 'http://localhost:8080/final/accounts?userId=1', true)
+        
+        request.onload = function() {
+        // Begin accessing JSON data here
+        var data = JSON.parse(this.response)
+
+        if (request.status >= 200 && request.status < 400) {
+          var selectAcch1 = document.createElement("h1"); 
+                var textNodeh1 = document.createTextNode("Selecciona la cuenta origen:")
+
+                selectAcch1.appendChild(textNodeh1); 
+
+                accountsContainer.appendChild(selectAcch1); 
+            data.forEach(account => {
+                var balance = formatBalance(account.finalBalance.toString());
+                var icon = ""; 
+                if(account.issuer == "money"){
+                    icon = account.issuer;
+                }else{
+                    icon = "icon-cc-"+account.issuer;
+                }
+                var label = document.createElement("label"); 
+                var input = document.createElement("input"); 
+                input.type = "radio"; 
+                input.name = "account-from"; 
+                if(accountId = localStorage.getItem("accountId") == account.id){
+                  input.checked = "checked"; 
+                }
+                input.value = account.id;
+                label.appendChild(input); 
+                var accountDiv = document.createElement("div");
+                accountDiv.classList.add("account"); 
+
+                var p = document.createElement("p"); 
+                var textP = document.createTextNode(account.nombre); 
+                p.appendChild(textP); 
+
+                var h1Acc = document.createElement("h1"); 
+                h1Acc.innerHTML = "<b>$</b> "+balance; 
+                
+                var h2Acc = document.createElement("h2"); 
+                h2Acc.classList.add(account.issuer); 
+
+                var spanAcc = document.createElement("span"); 
+                spanAcc.classList.add(icon); 
+
+                h2Acc.appendChild(spanAcc); 
+
+                accountDiv.appendChild(p); 
+                accountDiv.appendChild(h1Acc); 
+                accountDiv.appendChild(h2Acc); 
+
+                label.appendChild(accountDiv); 
+                
+                
+                accountsContainer.appendChild(label); 
+            })
+            var btnContainer = document.createElement("div");
+            btnContainer.classList.add("modal-content-select-account-btn-container")
+
+            var btn1 = document.createElement("button");
+            btn1.classList.add("btn-blue")
+            var buttonTextNode = document.createTextNode("Aceptar"); 
+            btn1.appendChild(buttonTextNode); 
+            btn1.setAttribute("onclick", "showSelectAccountTransferToModal()")
+
+            var btn2 = document.createElement("button"); 
+            btn2.classList.add("btn-red"); 
+            var buttonTextNode2 = document.createTextNode("Cancelar"); 
+            btn2.appendChild(buttonTextNode2); 
+            btn2.setAttribute("onclick", "hideSelectAccountTransferFromModal()")
+
+            btnContainer.appendChild(btn1); 
+            btnContainer.appendChild(btn2); 
+
+            accountsContainer.appendChild(btnContainer); 
+        } else {
+            console.log('error')
+        }
+        }
+        
+        request.send()
+
+      
+  modal7.style.display = "block"; 
+}
+
+function hideSelectAccountTransferFromModal(){
+  modal7.style.display = "none"; 
+}
+
+function showSelectAccountTransferToModal(){
+  var userId = localStorage.getItem("userId");
+  hideSelectAccountTransferFromModal()
+  var accountsContainer = document.getElementById("modal-content-select-account-to");
+  accountsContainer.innerHTML = ""; 
+        var request = new XMLHttpRequest()
+        
+        request.open('GET', 'http://35.236.52.46:8080/final/accounts?userId='+userId, true)
+        //request.open('GET', 'http://localhost:8080/final/accounts?userId=1', true)
+        
+        request.onload = function() {
+        // Begin accessing JSON data here
+        var data = JSON.parse(this.response)
+
+        if (request.status >= 200 && request.status < 400) {
+          var selectAcch1 = document.createElement("h1"); 
+                var textNodeh1 = document.createTextNode("Selecciona la cuenta destino:")
+
+                selectAcch1.appendChild(textNodeh1); 
+
+                accountsContainer.appendChild(selectAcch1); 
+            data.forEach(account => {
+                var balance = formatBalance(account.finalBalance.toString());
+                var icon = ""; 
+                if(account.issuer == "money"){
+                    icon = account.issuer;
+                }else{
+                    icon = "icon-cc-"+account.issuer;
+                }
+                var label = document.createElement("label"); 
+                var input = document.createElement("input"); 
+                input.type = "radio"; 
+                input.name = "account-to"; 
+                if(accountId = localStorage.getItem("accountId") == account.id){
+                  input.checked = "checked"; 
+                }
+                input.value = account.id;
+                label.appendChild(input); 
+                var accountDiv = document.createElement("div");
+                accountDiv.classList.add("account"); 
+
+                var p = document.createElement("p"); 
+                var textP = document.createTextNode(account.nombre); 
+                p.appendChild(textP); 
+
+                var h1Acc = document.createElement("h1"); 
+                h1Acc.innerHTML = "<b>$</b> "+balance; 
+                
+                var h2Acc = document.createElement("h2"); 
+                h2Acc.classList.add(account.issuer); 
+
+                var spanAcc = document.createElement("span"); 
+                spanAcc.classList.add(icon); 
+
+                h2Acc.appendChild(spanAcc); 
+
+                accountDiv.appendChild(p); 
+                accountDiv.appendChild(h1Acc); 
+                accountDiv.appendChild(h2Acc); 
+
+                label.appendChild(accountDiv); 
+                
+                
+                accountsContainer.appendChild(label); 
+            })
+            var btnContainer = document.createElement("div");
+            btnContainer.classList.add("modal-content-select-account-btn-container")
+
+            var btn1 = document.createElement("button");
+            btn1.classList.add("btn-blue")
+            var buttonTextNode = document.createTextNode("Aceptar"); 
+            btn1.appendChild(buttonTextNode); 
+            btn1.setAttribute("onclick", "showNewTransferModal()")
+
+            var btn2 = document.createElement("button"); 
+            btn2.classList.add("btn-red"); 
+            var buttonTextNode2 = document.createTextNode("Cancelar"); 
+            btn2.appendChild(buttonTextNode2); 
+            btn2.setAttribute("onclick", "hideSelectAccountTransferToModal()")
+
+            btnContainer.appendChild(btn1); 
+            btnContainer.appendChild(btn2); 
+
+            accountsContainer.appendChild(btnContainer); 
+        } else {
+            console.log('error')
+        }
+        }
+        
+        request.send()
+  modal8.style.display = "block"; 
+}
+
+function hideSelectAccountTransferToModal(){
+  modal8.style.display = "none"; 
+}
+
+function showNewTransferModal(){
+  hideSelectAccountTransferToModal();
+  modal9.style.display = "block"; 
+}
+
+function hidenewTransferModal(){
+  modal9.style.display = "none";
+}
+
+
+
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == modal) {
@@ -281,6 +540,16 @@ window.onclick = function(event) {
 
   if(event.target == modal6){
     modal6.style.display = "none";
+  }
+  if(event.target == modal7){
+    modal7.style.display = "none";
+  }
+  if(event.target == modal8){
+    modal8.style.display = "none";
+  }
+
+  if(event.target == modal9){
+    modal9.style.display = "none";
   }
 }
 
@@ -335,12 +604,30 @@ function formatNumberNewTrx(value){
   inputSaldo.value = saldo + "." + decimals;
 }
 
+function formatNumberNewTransfer(value){
+
+  var split = value.split('.'); 
+  var balance = split[0]; 
+  var decimals = split[1]; 
+
+  var inputSaldo = document.getElementById("trx-qty-transfer");
+  var saldo =  balance.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+  console.log(balance);
+  console.log(decimals);
+  if(decimals === undefined){
+    decimals = "00";
+  }
+  inputSaldo.type = "text";
+  inputSaldo.value = saldo + "." + decimals;
+}
+
 function eraseNumber(input){
   input.value = ""; 
   input.type = "number"; 
 }
 
 function createNewAccount(){
+  var userId = localStorage.getItem("userId");
   var name = document.getElementById("name-new-acc").value; 
   var saldo = document.getElementById("saldo-inicial").value; 
   var issuer = document.querySelector('input[name="issuer"]:checked').value;
@@ -350,7 +637,7 @@ function createNewAccount(){
 
   var request = new XMLHttpRequest()
         
-        request.open('GET', 'http://35.236.52.46:8080/final/accounts/addAccount?id=1&initialBalance='+saldo+'&name='+name+'&issuer='+issuer, true)
+        request.open('GET', 'http://35.236.52.46:8080/final/accounts/addAccount?id='+userId+'&initialBalance='+saldo+'&name='+name+'&issuer='+issuer, true)
         //request.open('GET', 'http://localhost:8080/final/accounts/addAccount?id=1&initialBalance='+saldo+'&name='+name, true)
         
         request.onload = function() {

@@ -242,7 +242,7 @@ body{
     text-align: center;
 }
 
-#new-trx, #del-acc, #back, #edit-acc{
+#new-trx, #del-acc, #back, #edit-acc, #logout{
     position: fixed;
     bottom: 10px; 
     right: 10px;
@@ -259,7 +259,7 @@ body{
     display: table;
 }
 
-#back{
+#back, #logout{
     left: 10px !important;
     display: table; 
 }
@@ -268,11 +268,11 @@ body{
     right: 160px;
 }
 
-#del-acc > h1, #back > h1, #edit-acc > h1{
+#del-acc > h1, #back > h1, #edit-acc > h1, #logout > h1{
     font-size: 32px !important;
 }
 
-#new-trx > h1, #del-acc > h1, #back > h1, #edit-acc > h1{
+#new-trx > h1, #del-acc > h1, #back > h1, #edit-acc > h1, #logout > h1{
     width: 100%;
     display: table-cell; 
     vertical-align: middle;
